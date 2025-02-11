@@ -1,49 +1,63 @@
-//basic powerful data type -> oject (which is key-value pair{singleton, multivalued}) -> we can define objects in three ways:
-//when you work with key-value pair always use (:) colon. for instance: 
-let person = {//method as property.
-    name: "Malaika", age: 21, isStudent: true, registeredCourses: { subject1: "PF", subject2: "OOP" }, displayName: function () {
+// Objects in JavaScript (Key-Value Pairs)
+let person = {
+    name: "Malaika", 
+    age: 21, 
+    isStudent: true, 
+    registeredCourses: { subject1: "PF", subject2: "OOP" }, 
+    // Method inside an object
+    displayName: function () {
         return this.name;
-
-    }, for(){
-        console.log(Object.keys(person));
-        Object.enteries(person);
-
+    }, 
+    // Method to list all keys in the object
+    listKeys: function() {
+        console.log(Object.keys(this));
     }
 };
-//object destructuring 
-let {name, isStudent} = person1;
-//(...) it can be used as expand
-let currentStudent = {... person1};
+
+// Object Destructuring - Extracting properties from an object
+let { name, isStudent } = person;
+
+// Spread operator to clone an object
+let currentStudent = { ...person };
 console.log(currentStudent);
 console.log(person.registeredCourses["subject1"]);
-//static can be used to define data type.
+
+// Creating objects using the Object constructor
 let persons = new Object();
 persons.name = "Milli";
 persons.age = 21;
 persons.isStudent = true;
+
+// Creating objects using Object.create (creates a new object with no prototype)
 let person2 = Object.create(null);
 person2.name = "Meddy";
 person2.age = 21;
 person2.isStudent = true;
-person2["city"] = "mars";
+person2["city"] = "Mars";
 
-//factory function ?
-let idVal = " "; //firstname.id;
-console.log(person2[idVal]);
+// Factory Function Example (used to create multiple objects with the same structure)
+function createPerson(name, age) {
+    return {
+        name,
+        age
+    };
+}
+let person3 = createPerson("Alice", 25);
+let person4 = createPerson("Bob", 30);
+console.log(person3, person4);
 
-function add(...val)
-{
-    return val;
+// Constructor Function Example (used for creating objects with prototypes)
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
 
-}
-function createPerson(name,age){
-    this.name="malajd";
-    this.age="45";
-}
-let person3 = new createPerson("sdgs",56);
-let person4 = new createPerson("sxdw",34);
-console.log(person3.createPerson());
-person.prototype.startsemester=true;
-person.prototype.greet=function(){
-    return "hello, ${this.name}";
-}
+// Adding properties and methods using prototype
+Person.prototype.startSemester = true;
+Person.prototype.greet = function () {
+    return `Hello, ${this.name}`;
+};
+
+// Creating an instance of Person
+let student1 = new Person("Charlie", 22);
+console.log(student1.greet());
