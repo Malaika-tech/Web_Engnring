@@ -8,34 +8,31 @@
 </head>
 <body>
     <div class="container">
-        <h2>Student Course Management</h2>
-        <label for="student">Select Student:</label>
-        <select id="student">
-            <option value="">-- Select Student --</option>
-            <option value="student1">Student 1</option>
-            <option value="student2">Student 2</option>
-        </select>
-        
-        <div id="menu" style="display: none;">
-            <button onclick="showSection('register')">Register Course</button>
-            <button onclick="showSection('view')">View Courses</button>
-            <button onclick="showSection('drop')">Drop Course</button>
+        <div class="student-section">
+            <h2>Select Student</h2>
+            <select id="student">
+                <option value="">-- Select Student --</option>
+                <option value="student1">Student 1</option>
+                <option value="student2">Student 2</option>
+                <option value="student3">Student 3</option>
+            </select>
+            
+            <div id="registerSection" class="section">
+                <h3>Register Course</h3>
+                <select id="courseSelect">
+                    <option value="">-- Select Course --</option>
+                    <option value="Math">Math</option>
+                    <option value="Science">Science</option>
+                    <option value="History">History</option>
+                    <option value="English">English</option>
+                </select>
+                <button onclick="registerCourse()">Register</button>
+            </div>
         </div>
         
-        <div id="registerSection" class="section" style="display: none;">
-            <h3>Register Course</h3>
-            <input type="text" id="courseInput" placeholder="Enter Course Name">
-            <button onclick="registerCourse()">Register</button>
-        </div>
-        
-        <div id="viewSection" class="section" style="display: none;">
-            <h3>Registered Courses</h3>
+        <div class="course-section">
+            <h2>Registered Courses</h2>
             <ul id="courseList"></ul>
-        </div>
-        
-        <div id="dropSection" class="section" style="display: none;">
-            <h3>Drop a Course</h3>
-            <ul id="dropList"></ul>
         </div>
     </div>
     <script src="./courseResgister.js"></script>
