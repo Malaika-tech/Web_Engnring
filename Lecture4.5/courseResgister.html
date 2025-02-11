@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Course Management</title>
+    <link rel="stylesheet" href="./courseResgister.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Student Course Management</h2>
+        <label for="student">Select Student:</label>
+        <select id="student">
+            <option value="">-- Select Student --</option>
+            <option value="student1">Student 1</option>
+            <option value="student2">Student 2</option>
+        </select>
+        
+        <div id="menu" style="display: none;">
+            <button onclick="showSection('register')">Register Course</button>
+            <button onclick="showSection('view')">View Courses</button>
+            <button onclick="showSection('drop')">Drop Course</button>
+        </div>
+        
+        <div id="registerSection" class="section" style="display: none;">
+            <h3>Register Course</h3>
+            <input type="text" id="courseInput" placeholder="Enter Course Name">
+            <button onclick="registerCourse()">Register</button>
+        </div>
+        
+        <div id="viewSection" class="section" style="display: none;">
+            <h3>Registered Courses</h3>
+            <ul id="courseList"></ul>
+        </div>
+        
+        <div id="dropSection" class="section" style="display: none;">
+            <h3>Drop a Course</h3>
+            <ul id="dropList"></ul>
+        </div>
+    </div>
+    <script src="./courseResgister.js"></script>
+</body>
+</html>

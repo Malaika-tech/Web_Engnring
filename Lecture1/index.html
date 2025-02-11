@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./file-1.css">
+
+    <title>Welcome to My Demo</title>
+</head>
+
+<body>
+    <h1>Welcome to My Demo</h1>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#about">About me</a></li>
+                <li><a href="#movies">Movies</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href ="#location">Location</a></li>
+                <li><a href="#musiclibrary">My Music Library</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="movies">
+            <h2>Movies</h2>
+            <p>These are some interesting movies everyone should watch:</p>
+            <table>
+                <tr>
+                    <th>Movie Name</th>
+                    <th>Watch Link</th>
+                </tr>
+                <tr>
+                    <td>Oppenheimer</td>
+                    <td><a href="https://www.imdb.com/title/tt15398776/" target="_blank">IMDb</a></td>
+                </tr>
+                <tr>
+                    <td>Hereditary</td>
+                    <td><a href="https://www.imdb.com/title/tt7784604/" target="_blank">IMDb</a></td>
+                </tr>
+                <tr>
+                    <td>Midnight</td>
+                    <td><a href="https://www.imdb.com/title/tt14715230/" target="_blank">IMDb</a></td>
+                </tr>
+                <tr>
+                    <td>Call</td>
+                    <td><a href="https://www.imdb.com/title/tt10530176/" target="_blank">IMDb</a></td>
+                </tr>
+            </table>
+        </section>
+        
+        <section id="skills">
+            <h2>Skills</h2>
+            <p>Skills I got:</p>
+            <ul>
+                <li>Communication Skills</li>
+                <li>Problem Solving</li>
+                <li>Coding </li>
+                <li>Presentation</li>
+                
+            </ul>
+        </section>
+        <section id="location">
+            <h2>Location</h2>
+            <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3316.0644091745433!2d73.07288801521066!3d33.6680555807136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbfa4ac664969%3A0x5ef152a32e553ce!2sDPL!5e0!3m2!1sen!2s!4v1698412345678!5m2!1sen!2s"
+        style="border:0;">
+    </iframe>
+    <address>
+        DPL, Islamabad, Pakistan <br>
+        <a href="https://www.google.com/maps/place/DPL/@33.6680556,73.072888,17z/data=!3m1!4b1!4m6!3m5!1s0x38dfbfa4ac664969:0x5ef152a32e553ce!8m2!3d33.6680556!4d73.0754629!16s%2Fg%2F11c1z97l3z?entry=ttu&g_ep=EgoyMDI1MDEyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank">View on Google Maps</a>
+    </address>
+        </section>
+        <section id="musiclibrary">
+            <h2>My Music Library</h2>
+            <audio controls>
+                <source src="laka-rabbi-nasheed.mp3" type="audio/mpeg">
+                laka-rabbi-nasheed.mp3
+                
+            </audio><br><br>
+            <audio controls>
+                <source src="the-way-of-the-tears.mp3" type="audio/mpeg">
+                the-way-of-the-tears.mp3
+            </audio>
+        </section>
+        <section id="about">
+            <h2>About Me</h2>
+            <form>
+                <label for="fname">First Name:</label><br>
+                <input type="text" id="fname" name="fname" required><br><br>
+
+                <label for="lname">Last Name:</label><br>
+                <input type="text" id="lname" name="lname" required><br><br>
+
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br><br>
+
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" rows="4" cols="30" required></textarea><br><br>
+
+                <label for="bad">Bad Things About Me:</label><br>
+                <input type="text" id="bad" name="bad"><br><br>
+
+                <label for="good">Good Things About Me:</label><br>
+                <input type="text" id="good" name="good"><br><br>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Malaika Naveed</p>
+    </footer>
+</body>
+
+</html>
