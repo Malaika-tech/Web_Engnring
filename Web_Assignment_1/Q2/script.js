@@ -1,4 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const themeToggle=document.getElementById("darkModeToggle");
+
+  if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark-mode");
+      themeToggle.textContent = "☀️";
+  } else {
+      themeToggle.textContent = "🌙";
+  }
+
+  themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      if (document.body.classList.contains("dark-mode")) {
+          localStorage.setItem("theme", "dark");
+          themeToggle.textContent = "☀️";
+      } else {
+          localStorage.setItem("theme", "light");
+          themeToggle.textContent = "🌙";
+      }
+  });
     let tasks = [];
     const taskNameInput = document.getElementById("taskname");
     const priorityInput = document.getElementById("priority");
@@ -8,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const taskCountInput = document.getElementById("taskCount");
     const taskListInput = document.getElementById("taskList");
     const completedTask = document.getElementById("completedtasks"); 
-    const darkModeToggle = document.getElementById("darkModeToggle");
+   
 
     addTaskBtn.addEventListener("click", () => {
         const taskName = taskNameInput.value.trim();
@@ -36,9 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
     filterPriority.addEventListener("change", renderTasks);
 
 
-    darkModeToggle.addEventListener("click", () =>
-        document.body.classList.toggle("darkMode")
-    );
+    
 
     function renderTasks() {
         taskListInput.innerHTML = "";
@@ -77,4 +94,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     renderTasks();
+    
 });
