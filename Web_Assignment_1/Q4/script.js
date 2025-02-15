@@ -42,18 +42,18 @@ const withdraw = ()=>{
     }
     let maxWithdrawBal = balance*0.8;
     if(amount>maxWithdrawBal){
-        alert(`You can only withdraw up to 80% of your balance (PKR ${maxWithdrawal}).`);
+        alert(`You can only withdraw up to 80% of your balance (PKR ${maxWithdrawBal}).`);
         return;
     }
-    balance-= amount;
-    transactions.push({type:"withdraw", amount});
+    balance= balance - amount;
+    transactions.push({type:"Withdraw", amount});
     updateTransactionHistory();
 
 };
 // Update Transaction History & Balance
 const updateTransactionHistory = () => {
-    document.getElementById("balance").innerText = transactions.reduce((total, t) => total + (t.type === "Deposit" ? t.amount : -t.amount), 0);
-
+    balance = transactions.reduce((total, t) => total + (t.type === "Deposit" ? t.amount : t.type === "Withdraw" ? -t.amount:0), 0);
+    document.getElementById("balance").innerText=balance;
     let historyList = document.getElementById("transactionHistory");
     historyList.innerHTML = "";
     transactions.forEach((t, index) => {
