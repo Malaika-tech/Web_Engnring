@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>To-do List</h1>
+        <button id="darkModeToggle">Dark Mode</button>
+        <div class="task-input">
+            <input type="text" id="taskname" placeholder="Enter your task name">
+            <select id="priority">
+                <option value="high">High</option>
+                <option value="meduim">Meduim</option>
+                <option value="low">Low</option>
+            </select>
+            <button id="addTask">Add Task</button>
+        </div>
+        <div class="search">
+            <input type="text" id="searchTask" placeholder="search task...">
+            <select id="filter">
+                <option value="all">All</option>
+                <option value="high">High</option>
+                <option value="meduim">Meduim</option>
+                <option value="low">Low</option>
+            </select>
+            <button id="searchButton">search Task</button>
+        </div>
+        <h2>Remaining Tasks: (<span id="taskCount">0</span>)</span></h2>
+        <div id="taskList"></div>
+
+        <h2>Completed Tasks</h2>
+        <div id="completedtasks"></div>
+
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

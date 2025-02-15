@@ -1,0 +1,194 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #b987f1;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+}
+
+html, body {
+    cursor: none;
+}
+
+#customCursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #32014ed2;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 50%;
+    position: absolute;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%);
+    transition: border-color 0.3s ease;
+}
+
+#cursorArrow {
+    position: absolute;
+    font-size: 14px;
+    color: #32014ed2;
+    transition: color 0.3s ease;
+}
+
+header {
+    background: #4a2377;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+    background-color: #4a2377;
+    padding: 15px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+nav ul li:hover {
+    background-color: #6a0783;
+    transform: translateY(-5px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+footer {
+    background: #4a2377;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#name {
+    float: left;
+}
+
+/* Dark mode styles */
+.dark-mode {
+    background-color: #1a1625;
+    color: #e0e7ff;
+}
+
+.dark-mode #customCursor {
+    border-color: #b388ff;
+}
+
+.dark-mode #cursorArrow {
+    color: #b388ff;
+}
+
+.dark-mode header {
+    background: #5e35b1;
+}
+
+.dark-mode nav ul li {
+    background-color: #7c4dff;
+}
+
+.dark-mode nav ul li:hover {
+    background-color: #4527a0;
+}
+
+.dark-mode footer {
+    background: #5e35b1;
+}
+
+.dark-mode {
+    --bg-color: #1a1625;
+    --text-color: #e0e7ff;
+    --cursor-border: #b388ff;
+    --cursor-arrow: #b388ff;
+    --header-bg: #5e35b1;
+    --nav-bg: #7c4dff;
+    --nav-hover-bg: #4527a0;
+    --footer-bg: #5e35b1;
+    --button-text: #e0e7ff;
+    --button-bg: #5e35b1;
+    --button-hover-bg: #4527a0;
+}
+
+#theme-toggle {
+    padding: 12px 20px;
+    background: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#theme-toggle:hover {
+    background-color: var(--button-hover-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+/* Center name and apply styles */
+.name-header {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+/* Hide strengths section initially */
+.hidden {
+    display: none;
+}
+
+/* Strengths section styles */
+#strengths {
+    text-align: center;
+    padding: 20px;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#strengths ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#strengths li {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+#typedText {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #2c3e50; /* Blinking cursor */
+    display: inline-block;
+    padding: 10px;
+    animation: blink 0.7s infinite;
+}

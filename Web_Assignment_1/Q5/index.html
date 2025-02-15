@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Roll-Number Based Discount System</h1>
+        
+        <label for="rollNumber">Enter Roll Number:</label>
+        <input type="text" id="rollNumber" placeholder="e.g., 21F-9445">
+        
+        <h2>Select Products</h2>
+        <ul id="productList"></ul>
+
+        <label for="promoCode">Enter Promo Code (Optional):</label>
+        <input type="text" id="promoCode" placeholder="like; EXTRA10">
+
+        <h3>Total Price: PKR <span id="totalPrice">0</span></h3>
+        <h3>Discounted Price: PKR <span id="discountedPrice">0</span></h3>
+
+        <button onclick="purchase()">Confirm Purchase</button>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

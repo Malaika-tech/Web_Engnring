@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank System</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Bank Account System</h2>
+        <label for="rollNumber">Enter your RollNumber:</label>
+        <input type="text" id="rollNumber" placeholder="like: 1234">
+        <button onclick="initializeAccount()">Create Account</button>
+
+        <div id="accountDetails" class="hidden">
+            <p><strong>Account Number:</strong><span id="accountNumber"></span></p>
+            <p><strong>Balance:</strong><span id="balance"></span></p>
+        </div>
+        <div id="transactionSection" class="hidden">
+            <label for="amount">Enter Amount:</label>
+        <input type="number" id="amount" placeholder="in PKR">
+        <button onclick="deposit()">Deposit</button>
+        <button onclick="withdraw()">Withdraw</button>
+        <button onclick="downloadHistory()">Download History</button>
+
+        <h3>Transaction History</h3>
+        <ul id="transactionHistory"></ul>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

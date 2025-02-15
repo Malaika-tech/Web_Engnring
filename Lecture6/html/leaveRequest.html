@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Request Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #confirmation {
+            display: none;
+            color: green;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Leave Request Form</h2>
+    <form id="leaveForm">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" required>
+
+        <label for="leaveType">Leave Type:</label>
+        <select id="leaveType" required>
+            <option value="Sick Leave">Sick Leave</option>
+            <option value="Casual Leave">Casual Leave</option>
+            <option value="Annual Leave">Annual Leave</option>
+        </select>
+
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" required>
+
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" required>
+
+        <label for="reason">Reason:</label>
+        <textarea id="reason" rows="3" required></textarea>
+
+        <button type="submit">Submit Request</button>
+    </form>
+
+    <p id="confirmation">✅ Your leave request has been submitted! A confirmation message has been sent.</p>
+</div>
+
+<script>
+    document.getElementById("leaveForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form refresh
+
+        const name = document.getElementById("name").value;
+        const phone = document.getElementById("phone").value;
+
+        if (!phone.match(/^\d{10}$/)) {
+            alert("Please enter a valid 10-digit phone number.");
+            return;
+        }
+
+        // Show confirmation message
+        document.getElementById("confirmation").style.display = "block";
+
+        // Send confirmation message (Replace with actual API call)
+        sendConfirmationMessage(phone, name);
+    });
+
+    function sendConfirmationMessage(phone, name) {
+        // Simulate an API call (Replace with actual Twilio or SMS API)
+        console.log(`📩 Sending confirmation message to ${phone}...`);
+        setTimeout(() => {
+            alert(`📩 Confirmation message sent to ${phone}.\nHello ${name}, your leave request has been received!`);
+        }, 1500);
+    }
+</script>
+
+</body>
+</html>
