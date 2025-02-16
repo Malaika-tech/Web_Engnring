@@ -16,13 +16,15 @@ body{
     text-align: center;
 }
 input, button{
-    width: 100%;
+    width: 80%;
     padding :8px;
     margin: 5px, 0;
 }
 button{
     background-color: #28a745;
     color: white;
+    margin-top: 8px;
+    padding: 8px;
     border: none;
     cursor: pointer;
 }

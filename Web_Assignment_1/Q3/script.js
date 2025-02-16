@@ -20,12 +20,15 @@ document.getElementById("stringForm").addEventListener("submit", function (e) {
 });
 
 const reverseWithSkip = (str, N) => {
-    if(N>str.length) return str;
-    let chars = [...str]; 
-    let reversed = chars.filter((_, i) => (i + 1) % N !== 0).reverse();
+    if (N > str.length) return str;
 
-    return chars.map((char, i) => ((i + 1) % N === 0) ? char : reversed.shift()).join("");
+    let chars = [...str]; 
+    let toReverse = chars.map((char, i) => ((i + 1) % N !== 0) ? char : null) 
+                         .filter(char => char !== null) 
+                         .reverse(); 
+    return chars.map((char, i) => ((i + 1) % N === 0) ? char : toReverse.shift()).join("");
 };
+
 
 const displayResult = (original, transformed) => {
     let resultList = document.getElementById("resultList");
