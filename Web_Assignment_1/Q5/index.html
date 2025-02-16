@@ -7,22 +7,29 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Roll-Number Based Discount System</h1>
+    <h2>Select Products</h2>
+    <div id="productList"></div>
+
+    <h3>Enter Details</h3>
+    <label>Roll Number: </label>
+    <input type="text" id="rollNumber" placeholder="Enter Roll Number">
+    <p id="rollNumberError" style="color: red; display: none;">Invalid Roll Number</p>
+
+    <label>Promo Code: </label>
+    <input type="text" id="promoCodes" placeholder="Enter Promo Code">
+
+    <button onclick="updateCart()">Calculate Purchase</button>
+
+    <div id="summary">
+        <h3>Cart Summary</h3>
+        <p><strong>Selected Products:</strong></p>
+        <div id="selectedProducts"></div>
         
-        <label for="rollNumber">Enter Roll Number:</label>
-        <input type="text" id="rollNumber" placeholder="e.g., 21F-9445">
-        
-        <h2>Select Products</h2>
-        <ul id="productList"></ul>
+        <p><strong>Discount Info:</strong></p>
+        <div id="discountInfo"></div>
 
-        <label for="promoCode">Enter Promo Code (Optional):</label>
-        <input type="text" id="promoCode" placeholder="like; EXTRA10">
-
-        <h3>Total Price: PKR <span id="totalPrice">0</span></h3>
-        <h3>Discounted Price: PKR <span id="discountedPrice">0</span></h3>
-
-        <button onclick="purchase()">Confirm Purchase</button>
+        <p><strong>Total Price:</strong></p>
+        <div id="totalPrice"></div>
     </div>
     <script src="./script.js"></script>
 </body>
