@@ -61,32 +61,69 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Strengths Typewriter Effect
-function showStrengths(event) {
-  event.preventDefault(); // Prevent default link behavior
-  
-  const strengthsText = 
-      "🌟 I am a strong problem solver, 💻 proficient in JavaScript, Java, and Web Development, " +
-      "🔍 highly detail-oriented with a focus on quality assurance, 📝 skilled in technical writing, " +
-      "🚀 passionate about learning and adapting to new technologies.";
-  
-  const strengthsElement = document.getElementById("typedText");
-  const strengthsSection = document.getElementById("strengths");
 
-  strengthsSection.classList.remove("hidden"); // Show section
-  strengthsElement.innerHTML = ""; // Clear previous text
-  
-  let index = 0;
-  
-  function typeText() {
-      if (index < strengthsText.length) {
-          strengthsElement.innerHTML += strengthsText.charAt(index);
-          index++;
-          setTimeout(typeText, 50); // Adjust speed (50ms per letter)
-      } else {
-          strengthsElement.style.borderRight = "none"; // Remove cursor after typing
-      }
-  }
-  
-  typeText();
+document.querySelectorAll('.faq-question').forEach(item => {
+    item.addEventListener('click', () => {
+        const answer = item.nextElementSibling;
+        if (answer.style.display === "block") {
+            answer.style.display = "none";
+        } else {
+            document.querySelectorAll('.faq-answer').forEach(ans => ans.style.display = "none");
+            answer.style.display = "block";
+        }
+    });
+});
+
+// Typing Animation
+const textElement = document.querySelector(".typing-text");
+const strengths = 
+      ["🌟 I am a strong problem solver, 💻 proficient in JavaScript, Java, and Web Development, " +
+      "🔍 highly detail-oriented with a focus on quality assurance, 📝 skilled in technical writing, " +
+      "🚀 passionate about learning and adapting to new technologies."];
+let index = 0;
+let charIndex = 0;
+function type() {
+    if (charIndex < strengths[index].length) {
+        textElement.innerHTML += strengths[index].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, 100);
+    } else {
+        setTimeout(erase, 1000);
+    }
 }
+function erase() {
+    if (charIndex > 0) {
+        textElement.innerHTML = strengths[index].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, 50);
+    } else {
+        index = (index + 1) % strengths.length;
+        setTimeout(type, 500);
+    }
+}
+type();
+
+// FAQs Toggle
+const faqs = document.querySelectorAll(".faq-question");
+faqs.forEach(q => q.addEventListener("click", function() {
+    this.nextElementSibling.style.display =
+        this.nextElementSibling.style.display === "block" ? "none" : "block";
+}));
+document.getElementById("request-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const leaveType = document.getElementById("leave-type").value;
+    const message = document.getElementById("message").value;
+
+    // Simple Alert for Form Submission
+    alert(`Request Submitted:
+        Name: ${name}
+        Email: ${email}
+        Phone: ${phone}
+        Leave Type: ${leaveType}
+        Message: ${message || "No additional notes"}`);
+});
+
+

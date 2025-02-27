@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+}
+h2 {
+    color: #333;
+}
+.container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+input {
+    width: 90%;
+    padding: 8px;
+    margin: 5px 0;
+}
+button {
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    width: 48%;
+}
+.spend {
+    background-color: red;
+    color: white;
+}
+.income {
+    background-color: green;
+    color: white;
+}
+.balance {
+    font-size: 20px;
+    margin: 10px 0;
+}
+.debit {
+    color: red;
+}
+.credit {
+    color: green;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+li {
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
