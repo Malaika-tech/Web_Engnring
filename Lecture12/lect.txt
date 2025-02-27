@@ -1,0 +1,47 @@
+### **Node.js Basics & NPM Instructions**  
+
+#### **1. Importing Modules in Node.js**  
+- **`require()`** → Used to import built-in modules, user-defined modules, and installed packages.  
+- **`import`** → Used for ES6 modules (requires `"type": "module"` in `package.json`).  
+
+#### **2. NPM (Node Package Manager)**  
+- **To initialize a new Node.js project:**  
+  ```sh
+  npm init
+  ```
+  This will prompt questions like project name, version, entry file, etc.  
+
+- **To quickly initialize without answering questions:**  
+  ```sh
+  npm init -y
+  ```
+  This automatically generates `package.json` with default values.  
+
+#### **3. Installing Packages**  
+- **Locally (for the project only):**  
+  ```sh
+  npm install package-name
+  ```  
+- **Globally (accessible in all projects):**  
+  ```sh
+  npm install -g package-name
+  ```
+
+#### **4. Difference Between `require` and `import`**  
+| Feature        | `require()` | `import` |
+|---------------|------------|----------|
+| Type          | CommonJS   | ES6 Modules |
+| Usage        | Built-in & user-defined modules | ES6 modules only |
+| Syntax       | `const fs = require('fs');` | `import fs from 'fs';` |
+| Works in Node.js? | Yes, default | Only if `"type": "module"` is in `package.json` |
+
+#### **5. Useful Node.js Global Variables**  
+- `__dirname` → Returns the current working directory of the script.  
+  ```js
+  console.log(__dirname);
+  ```
+- `__filename` → Returns the absolute path of the current script file.  
+  ```js
+  console.log(__filename);
+  ```
+
