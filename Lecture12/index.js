@@ -61,14 +61,14 @@
 
 // totalSalary();
 
-const http = require ('http'); // Use 'http' instead of 'file'
+// const http = require ('http'); // Use 'http' instead of 'file'
 
-const server = http.createServer((req, res) => {
-    res.writeHead(200, { 'Content-Type': 'text/plan' }); // Fixed header
-    res.end('<h1>Welcome to hell</h1>'); // Wrapped in <h1> for better display
-});
+// const server = http.createServer((req, res) => {
+//     res.writeHead(200, { 'Content-Type': 'text/plan' }); // Fixed header
+//     res.end('<h1>Welcome to hell</h1>'); // Wrapped in <h1> for better display
+// });
 
-server.listen(3000, () => {
-    console.log('Server is running on http://localhost:3000');
-});
+// server.listen(3000, () => {
+//     console.log('Server is running on http://localhost:3000');
+// });
 
