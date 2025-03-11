@@ -45,3 +45,5 @@
   console.log(__filename);
   ```
 
+PUT (if you want to modify most information)
+PATCH (if you want to modify partial information)
