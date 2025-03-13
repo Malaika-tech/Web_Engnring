@@ -130,16 +130,74 @@ const myFriend = [
     }
 ];
 
-// Default route
-app.get('/', (req, res) => {
-    res.send("I am active");
-});
+// // Default route
+// app.get('/', (req, res) => {
+//     res.send("I am active");
+// });
 
-// API route - Get all friends
-app.get('/api/Friend', (req, res) => {
-    res.json(myFriend);
-});
+// // API route - Get all friends
+// app.get('/api/Friend', (req, res) => {
+//     res.json(myFriend);
+// });
+//============Manual Property Update==========//
+// app.patch('/api/Friend/:id', async (req, res) => {
+//     const id = req.params.id.toString(); // Convert to string for strict comparison
+//     const index = myFriend.findIndex(friend => friend.id === id);
 
+//     if (index === -1) {
+//         return res.status(404).json({ message: "Friend not found" });
+//     }
+
+//     // Update only fields provided in request body
+//     const { name, mobile_number, age } = req.body;
+
+//     if (name !== undefined) myFriend[index].name = name;
+//     if (mobile_number !== undefined) myFriend[index].mobile_number = mobile_number;
+//     if (age !== undefined) myFriend[index].age = age;
+
+//     res.json({ message: "Friend updated successfully", friend: myFriend[index] });
+// });
+//============Efficient Approach(Object Merging)==============//
+app.patch('/api/Friend/:id', async (req, res) => {
+    const id = req.params.id.toString(); // Ensure ID is a string
+    const index = myFriend.findIndex(friend => friend.id === id);
+
+    if (index === -1) {
+        return res.status(404).json({ message: "Friend not found" });
+    }
+
+    // Use the spread operator to update only provided fields
+    myFriend[index] = { ...myFriend[index], ...req.body };
+
+    res.json({ message: "Friend updated successfully", friend: myFriend[index] });
+});
+//=====PUT request=====//
+app.put('/api/Friend/:id', async (req, res) => {
+    const id = req.params.id.toString(); // Ensure ID is a string
+    const index = myFriend.findIndex(friend => friend.id === id);
+
+    if (index === -1) {
+        return res.status(404).json({ message: "Friend not found" });
+    }
+
+    // Replace the entire object (all fields must be provided in the request)
+    myFriend[index] = { id, ...req.body };
+
+    res.json({ message: "Friend replaced successfully", friend: myFriend[index] });
+});
+//======DELETE Friend=======//
+app.delete('/api/Friend/:id', async (req, res) => {
+    const id = req.params.id.toString(); // Ensure ID is a string
+    const index = myFriend.findIndex(friend => friend.id === id);
+
+    if (index === -1) {
+        return res.status(404).json({ message: "Friend not found" });
+    }
+    //myFriend.splice(index,1);
+    myFriend.splice(0);
+
+    res.json({ message: "Friend deleted successfully", friend: myFriend[index] });
+});
 // API route - Get a specific friend by ID
 app.get('/api/Friend/:id', (req, res) => {
     const id = req.params.id;  // Extract ID from URL
@@ -152,28 +210,28 @@ app.get('/api/Friend/:id', (req, res) => {
     }
 });
 
-// Joi Schema for validation
-const schema = Joi.object({
-    name: Joi.string().min(3).max(20).required(),
-    age: Joi.number().integer().min(18).required(),
-    mobile_number: Joi.string().pattern(new RegExp("^\\d{3}-\\d{3}-\\d{4}$")).required()
-});
+// // Joi Schema for validation
+// const schema = Joi.object({
+//     name: Joi.string().min(3).max(20).required(),
+//     age: Joi.number().integer().min(18).required(),
+//     mobile_number: Joi.string().pattern(new RegExp("^\\d{3}-\\d{3}-\\d{4}$")).required()
+// });
 
-// API route - Add a new friend with validation
-app.post('/api/Friend', (req, res) => {
-    // Validate the incoming request body
-    const { error, value } = schema.validate(req.body);
+// // API route - Add a new friend with validation
+// app.post('/api/Friend', (req, res) => {
+//     // Validate the incoming request body
+//     const { error, value } = schema.validate(req.body);
 
-    if (error) {
-        return res.status(400).json({ errormessage: error.details[0].message });
-    }
+//     if (error) {
+//         return res.status(400).json({ errormessage: error.details[0].message });
+//     }
 
-    // If validation passes, add new friend to the array
-    const newFriend = { id: uuidv4(), ...value }; // Generate unique ID
-    myFriend.push(newFriend);
+//     // If validation passes, add new friend to the array
+//     const newFriend = { id: uuidv4(), ...value }; // Generate unique ID
+//     myFriend.push(newFriend);
 
-    res.status(201).json({ message: "Friend added successfully!", newFriend });
-});
+//     res.status(201).json({ message: "Friend added successfully!", newFriend });
+// });
 
 
-app.listen(3000, () => console.log(`Server running on port 3000`));
+ app.listen(3000, () => console.log(`Server running on port 3000`));
