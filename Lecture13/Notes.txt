@@ -1,0 +1,9 @@
+**Schema:**
+ Document: Row in table
+ collection: Table
+**Command to check installation and version of mongodb:**
+ mongod --version
+**Install NPM Validator**
+ npm install Validator
+
+
