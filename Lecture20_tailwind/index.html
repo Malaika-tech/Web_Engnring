@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fancy Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          backgroundImage: {
+            'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+          },
+        }
+      }
+    }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/forms" rel="stylesheet" />
+  <script src="https://unpkg.com/@heroicons/vue@2.0.16/outline/index.umd.js"></script>
+</head>
+<body class="bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 min-h-screen flex items-center justify-center px-4">
+
+  <div class="backdrop-blur-md bg-white/30 border border-white/40 shadow-2xl rounded-3xl p-8 w-full max-w-md">
+    <h2 class="text-4xl font-bold text-white text-center mb-8">🔐 Welcome Back</h2>
+    
+    <form id="loginForm" class="space-y-6">
+      <div>
+        <label for="username" class="block text-white font-semibold mb-1">Username</label>
+        <div class="flex items-center bg-white/20 rounded-lg px-3 py-2 focus-within:ring-2 ring-indigo-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A7 7 0 1118.88 6.196 7 7 0 015.12 17.804z" />
+          </svg>
+          <input type="text" id="username" placeholder="Enter your username"
+            class="w-full bg-transparent text-white placeholder-white focus:outline-none" required />
+        </div>
+      </div>
+
+      <div>
+        <label for="password" class="block text-white font-semibold mb-1">Password</label>
+        <div class="flex items-center bg-white/20 rounded-lg px-3 py-2 focus-within:ring-2 ring-indigo-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 11c.714 0 1.39.11 2 .305V7a4 4 0 10-8 0v4.305c.61-.195 1.286-.305 2-.305z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M6 21v-2a4 4 0 014-4h0a4 4 0 014 4v2" />
+          </svg>
+          <input type="password" id="password" placeholder="••••••••"
+            class="w-full bg-transparent text-white placeholder-white focus:outline-none" required />
+        </div>
+      </div>
+
+      <div>
+        <label for="role" class="block text-white font-semibold mb-1">Role</label>
+        <select id="role" class="w-full bg-white/20 text-white rounded-lg px-4 py-2 focus:ring-2 ring-indigo-300" required>
+          <option value="" disabled selected>Select your role</option>
+          <option value="admin">Admin</option>
+          <option value="editor">Editor</option>
+          <option value="viewer">Viewer</option>
+        </select>
+      </div>
+
+      <button type="submit"
+        class="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-lg transition-all duration-300">Login</button>
+    </form>
+
+    <div id="response" class="mt-6 text-center text-white text-sm"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const responseDiv = document.getElementById('response');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const role = document.getElementById('role').value;
+
+      console.log("Sending data:", { username, password, role });
+
+      try {
+        const res = await fetch('http://localhost:3000/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, password, role })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          responseDiv.innerHTML = `
+            <div class="bg-green-100/80 text-green-900 p-4 rounded-lg mt-4">
+              ${data.message}<br/>
+              <strong>Token:</strong><br/>
+              <code class="break-words">${data.token}</code>
+            </div>`;
+        } else {
+          responseDiv.innerHTML = `
+            <div class="bg-red-100/80 text-red-900 p-4 rounded-lg mt-4">
+              ${data.message || "Login failed"}
+            </div>`;
+        }
+      } catch (error) {
+        responseDiv.innerHTML = `
+          <div class="bg-red-100/80 text-red-900 p-4 rounded-lg mt-4">
+            An error occurred while trying to login. Please try again later.
+          </div>`;
+        console.error('Error during login:', error);
+      }
+    });
+  </script>
+
+</body>
+</html>
